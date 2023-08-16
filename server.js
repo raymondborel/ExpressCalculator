@@ -55,7 +55,16 @@ app.get('/divide/:x/:y', (req, res) => {
 });
 
 
+app.get('/:nums', (req,res) => {
+    let nums = req.params.nums.split('/')
+    let mathOperation = req.query.math;
 
+    if (!mathOperation || !['add', 'subtract', 'multiply', 'divide'].includes(mathOperation)) {
+        return res.status(400).send('Invalid number or operation, please try again');
+    }
+
+    
+})
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 });
